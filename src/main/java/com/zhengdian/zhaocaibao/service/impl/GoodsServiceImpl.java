@@ -17,4 +17,19 @@ public class GoodsServiceImpl implements GoodsService {
     public void addGoods(Goods goods) {
         goodsMapper.addGoods(goods);
     }
+
+    @Override
+    public void offGoodsById(int id) {
+
+    }
+
+    @Override
+    public Goods selectGoodsById(int id) {
+        return null;
+    }
+
+    @Override
+    public void updateGoodsById(Goods goods) {
+
+    }
 }

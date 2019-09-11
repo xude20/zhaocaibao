@@ -6,6 +6,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Component
@@ -16,7 +17,11 @@ public interface UserMapper {
 
     int selectUserById(int id);
 
-    int register(User user);
-
     int isAlreadyUse(String userPhone);
+
+    int register(Map<String, String> map);
+
+    void addCode6(Map<String, String> map);
+
+    int resultOfCode(String userPhone, String code6);
 }

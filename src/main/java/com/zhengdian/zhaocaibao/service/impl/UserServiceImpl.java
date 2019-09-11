@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,14 +33,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean register(User user) {
-        int result = userMapper.register(user);
+    public boolean isAlreadyUse(String userPhone) {
+        int result = userMapper.isAlreadyUse(userPhone);
         return result == 1 ? true : false;
     }
 
     @Override
-    public boolean isAlreadyUse(String userPhone) {
-        int result = userMapper.isAlreadyUse(userPhone);
+    public boolean register(Map<String, String> map) {
+        int result = userMapper.register(map);
         return result == 1 ? true : false;
+    }
+
+    @Override
+    public void addCode6(Map<String, String> map) {
+        userMapper.addCode6(map);
+    }
+
+    @Override
+    public int resultOfCode(String userPhone, String code6) {
+        return userMapper.resultOfCode(userPhone,code6);
     }
 }

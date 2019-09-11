@@ -8,8 +8,8 @@
 	</select>
 
 	<!--注册用户-->
-	<insert id="register" parameterType="com.zhengdian.zhaocaibao.entity.User">
-		insert into tb_user(userphone,password,petname,flag,ctime) values(#{userPhone},#{password},petName,2,#{cTime})
+	<insert id="register" parameterType="Map">
+		insert into tb_user(userphone,password,petname,flag,ctime) values(#{userPhone},#{password},#{petName},2,#{cTime})
 	</insert>
 
 	<!--用于前端测试手机号是否已经被注册-->
@@ -25,4 +25,13 @@
 		select count(*) from tb_user where id = #{id}
 	</select>
 
+	<!--暂时先将验证码方到数据库，redis配好后需要放到redis-->
+	<insert id="addCode6" parameterType="Map">
+		insert into tb_phonecode(userphone,code6) values (#{userPhone},#{code6})
+	</insert>
+
+	<!--这里检测是否有验证码-->
+	<select id="resultOfCode" parameterType="String" resultType="int">
+		select count(*) from tb_phonecode where userphone = #{userPhone} and code6 = #{code6}
+	</select>
 </mapper>
