@@ -49,6 +49,7 @@ public class UnitTest {
         String format = dateFormat.format(new Date());
         System.out.println(format);
 
+        System.out.println(System.currentTimeMillis());
     }
 
     @Test

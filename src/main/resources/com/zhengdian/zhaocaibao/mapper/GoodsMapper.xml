@@ -6,10 +6,29 @@
 
 	<!--新增一条商品信息-->
 	<insert id="addGoods" parameterType="com.zhengdian.zhaocaibao.entity.Goods">
-		insert into tb_goods(userphone,title,detail,imgurl,videourl,ctime,,deadline,firstprice,rangeprice,adviceprice,flag) values (
-		#{userPhone},#{title},#{detail},#{imgUrl},#{videoUrl},#{ctime},#{deadLine},#{firstPrice},#{rangePrice},#{advicePrice},1
+		insert into tb_goods(userphone,title,detail,imgurl,videourl,ctime,deadline,firstprice,rangeprice,adviceprice,flag) values (
+		#{userPhone},#{title},#{detail},#{imgUrl},#{videoUrl},#{cTime},#{deadLine},#{firstPrice},#{rangePrice},#{advicePrice},1
 		)
 	</insert>
 
+	<!--修改一条商品信息-->
+	<insert id="updateGoodsById" parameterType="com.zhengdian.zhaocaibao.entity.Goods">
+		insert into tb_goods(userphone,title,detail,imgurl,videourl,ctime,deadline,firstprice,rangeprice,adviceprice,flag) values (
+		#{userPhone},#{title},#{detail},#{imgUrl},#{videoUrl},#{cTime},#{deadLine},#{firstPrice},#{rangePrice},#{advicePrice},1
+		) where id = #{id}
+	</insert>
+	<!--改变商品的状态，相当于下架-->
+	<update id="offGoodsById" parameterType="int">
+		update tb_goods set flag = 2 where id = #{id}
+	</update>
 
+	<!--按照flag展示所有商品-->
+	<select id="selectOffGoods" parameterType="int" resultType="com.zhengdian.zhaocaibao.entity.Goods">
+		select * from tb_goods where flag = #{flag}
+	</select>
+
+	<!--通过id寻找商品-->
+	<select id="selectGoodsById" parameterType="int" resultType="com.zhengdian.zhaocaibao.entity.Goods">
+		select * from tb_goods where id = #{id}
+	</select>
 </mapper>
