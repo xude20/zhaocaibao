@@ -2,6 +2,7 @@ package com.zhengdian.zhaocaibao.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 public class Aution {
@@ -9,6 +10,7 @@ public class Aution {
     private String userPhone;
     private int goodsId;
     private String cTime;
+    private int price;
 
     public int getId() {
         return id;
@@ -42,6 +44,14 @@ public class Aution {
         this.cTime = cTime;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Aution{" +
@@ -49,6 +59,7 @@ public class Aution {
                 ", userPhone='" + userPhone + '\'' +
                 ", goodsId=" + goodsId +
                 ", cTime='" + cTime + '\'' +
+                ", price=" + price +
                 '}';
     }
 }

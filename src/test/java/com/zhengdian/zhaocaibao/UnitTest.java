@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import sun.net.www.http.HttpClient;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -15,7 +16,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 public class UnitTest {
 
@@ -61,5 +65,35 @@ public class UnitTest {
         httpURLConnection.setRequestMethod("GET");
         httpURLConnection.connect();
 
+    }
+
+    /**
+     * 排序的测试
+     */
+    @Test
+    public void numTest() {
+        List<Integer> intHvals = new ArrayList<>();
+        intHvals.add(17);
+        intHvals.add(66);
+        intHvals.add(3);
+        intHvals.add(21);
+        intHvals.add(9);
+        System.out.println(intHvals);
+        //利用collections的sort功能进行从小到大的排序，好用！
+        Collections.sort(intHvals);
+        System.out.println("排序过的："+intHvals);
+        int a = intHvals.get(intHvals.size()-1);
+        System.out.println(a);
+    }
+
+    @Test
+    public void ossTest() {
+        String files="C:\\Users\\86152\\Pictures\\Saved Pictures\\1.jpeg,C:\\Users\\86152\\Pictures\\Saved Pictures\\2.jpeg,C:\\Users\\86152\\Pictures\\Saved Pictures\\3.jpeg";
+        String[] file=files.split(",");
+        for(String filename:file) {
+            //System.out.println("filename:"+filename);
+            File filess=new File(filename);
+            System.out.println(filess);
+        }
     }
 }
